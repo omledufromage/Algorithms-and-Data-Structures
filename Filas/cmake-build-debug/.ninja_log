@@ -1,0 +1,12 @@
+# ninja log v5
+1	23	1696107667879000719	CMakeFiles/untitled.dir/item.c.o	7c969df37655735a
+1	52	1696107667907001003	CMakeFiles/untitled.dir/mallocc.c.o	6c503b7168d76192
+1	55	1696107667911001043	CMakeFiles/untitled.dir/fila_lista_ligada.c.o	19d031cd5ba48e29
+0	26	1696108011418446555	build.ninja	97046c522cb599a5
+0	39	1696107667895000881	CMakeFiles/untitled.dir/main.c.o	c43d3ea342e99461
+55	86	1696107667943001367	untitled	d6ce6238a4cf2449
+2	30	1696108014502477261	CMakeFiles/untitled.dir/item.c.o	4db54dc65e1100a8
+1	42	1696108014514477380	CMakeFiles/untitled.dir/main.c.o	a681209fb3d37797
+5	51	1696108014522477460	CMakeFiles/untitled.dir/mallocc.c.o	208a17809631feef
+2	64	1696108014538477619	CMakeFiles/untitled.dir/fila_lista_ligada.c.o	879a013dcf0af6d2
+64	121	1696108014594478177	untitled	d6ce6238a4cf2449

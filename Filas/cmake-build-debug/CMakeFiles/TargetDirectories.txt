@@ -1,0 +1,3 @@
+/home/mreverbel/Studies/Algorithms in C/Filas/cmake-build-debug/CMakeFiles/untitled.dir
+/home/mreverbel/Studies/Algorithms in C/Filas/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/mreverbel/Studies/Algorithms in C/Filas/cmake-build-debug/CMakeFiles/rebuild_cache.dir

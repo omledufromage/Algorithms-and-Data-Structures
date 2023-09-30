@@ -1,0 +1,3 @@
+/home/mreverbel/Studies/Algorithms in C/EP2_Polinomios/cmake-build-debug/CMakeFiles/EP2_Polinomios.dir
+/home/mreverbel/Studies/Algorithms in C/EP2_Polinomios/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/mreverbel/Studies/Algorithms in C/EP2_Polinomios/cmake-build-debug/CMakeFiles/rebuild_cache.dir

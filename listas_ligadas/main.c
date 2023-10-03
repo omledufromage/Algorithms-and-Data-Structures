@@ -10,6 +10,7 @@ struct cel {
 
 void imprima(celula *lst);
 void insere(int y, celula *p);
+celula *busca(int x, celula *lst);
 
 celula *buscaF(int x, celula *ini) {
     int achou;
@@ -116,7 +117,7 @@ int main() {
 
     celula *teste;
     printf("TESTANDO:\n");
-    teste = buscaComCabeca(4, head);
+    teste = minimoR(head);
     printf("%d\n", &teste->cont);
 
     // Vetor e Lista

@@ -2,19 +2,18 @@
 // Created by mreverbel on 10/3/23.
 //
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 typedef struct cel celula;
 struct cel {
     int cont;
     struct cel *seg;
 };
+
 // 1)
 // Critique a funcão abaixo.  Ao receber uma lista encadeada com cabeça e um inteiro x, ela promete devolver o
 // endereço de uma célula com conteúdo x. Se tal célula não existe, promete devolver NULL:
 
-celula *busca(int x, celula *ini) {
+celula *buscaF(int x, celula *ini) {
     int achou;
     celula *p;
     achou = 0;
@@ -28,7 +27,7 @@ celula *busca(int x, celula *ini) {
 
 // A funcão acima deve funcionar, mas a solućão não é elegante, uma vez que a variável 'achou' pode ser inteiramente
 // descartada e que podemos dar 'return p' mesmo quando não achamos x, considerando que p será NULL:
-celula *busca_com_cabeca(int x, celula *ini) {
+celula *buscaComCabeca(int x, celula *ini) {
     celula *p;
     p = ini->seg;
     while (p != NULL && p->cont != x)
@@ -37,7 +36,7 @@ celula *busca_com_cabeca(int x, celula *ini) {
 }
 // 2)
 // Escreva uma versão da funćão busca para listas sem cabeća:
-celula *busca_sem_cabeca(int x, celula *ini) {
+celula *buscaSemCabeca(int x, celula *ini) {
     celula *p;
     // Preciso de um ´if statement' para o caso de ini apontar para NULL? Depende da ordem dentro do While!
     p = ini;
@@ -49,32 +48,34 @@ celula *busca_sem_cabeca(int x, celula *ini) {
 // 3)
 // Escreva uma função que encontre uma célula de conteúdo mínimo. Faça duas versões: uma iterativa e uma recursiva.
 // (Com cabeca)
-celula *minimo_iterativa(celula *ini) {
-    celula *p;
-    int x;
+celula *minimoI(celula *ini) {
+    celula *p, *x;
     p = ini->seg;
     if (p == NULL) {
         printf("Lista vazia!");
         return NULL;
     } // Tem algum jeito de evitar este if?
-    x = p->cont;
+    x = p;
     for (p = p->seg; p != NULL; p = p->seg) {
-        if (p->cont < x)
-            x = p->cont;
+        if (p->cont < x->cont)
+            x = p;
     }
     return x;
 }
-celula *minimo_recursiva(celula *ini) {
-    celula *p;
+celula *minimoR(celula *ini) {
+    celula *p, *x, *y;
     p = ini->seg;
-    int x = NULL, y;
-    if (p != NULL)
-        x = p->cont;
+    x = NULL;
+    if (p != NULL) {
+        x = p;
         if (p->seg == NULL)
             return x;
-    y = minimo_recursiva(p->seg);
-    if (y < x)
-        x = y;
+        else {
+            y = minimoR(p);
+            if (y->cont < x->cont)
+                x = y;
+        }
+    }
     return x;
 }
 

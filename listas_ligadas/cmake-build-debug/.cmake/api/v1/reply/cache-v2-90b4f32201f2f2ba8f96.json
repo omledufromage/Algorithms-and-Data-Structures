@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/mreverbel/Studies/Algorithms in C/listas_ligadas/cmake-build-debug"
+			"value" : "/home/mreverbel/Studies/Algorithms and Data Structures/listas_ligadas/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -463,7 +463,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/mreverbel/Studies/Algorithms in C/listas_ligadas"
+			"value" : "/home/mreverbel/Studies/Algorithms and Data Structures/listas_ligadas"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -995,7 +995,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/mreverbel/Studies/Algorithms in C/listas_ligadas/cmake-build-debug"
+			"value" : "/home/mreverbel/Studies/Algorithms and Data Structures/listas_ligadas/cmake-build-debug"
 		},
 		{
 			"name" : "listas_ligadas_IS_TOP_LEVEL",
@@ -1019,7 +1019,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/mreverbel/Studies/Algorithms in C/listas_ligadas"
+			"value" : "/home/mreverbel/Studies/Algorithms and Data Structures/listas_ligadas"
 		}
 	],
 	"kind" : "cache",

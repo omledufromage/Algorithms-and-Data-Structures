@@ -1,12 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-typedef struct cel celula;
-struct cel {
-    int cont;
-    struct cel *seg;
-};
+#include "exercicios_Feofiloff.c"
 
 void imprima(celula *lst);
 void insere(int y, celula *p);
@@ -17,7 +12,7 @@ int main() {
     printf("Digite o tamanho da lista: ");
     scanf("%d", &n);
 
-    celula *head, *t;
+    celula *head, *t, *s;
     head = malloc( sizeof(celula));
     head->seg = NULL;
 
@@ -42,25 +37,24 @@ int main() {
         last->seg = NULL;
     }
 
-    celula *lista;
-
-    lista = malloc((n+1) * sizeof(celula));
-
-    for (i = 0; i <= n; i++) {
-        //(lista+i)->seg = lista+i+1;
-        lista[i].seg = &lista[i+1]; // Igual a: (lista+i)->seg = lista+i+1; // NÃO FUNCIONA
-        lista[i+1].seg = NULL;
-        lista[i+1].cont = i;
-    }
-    imprima(lista->seg);
-
-
     printf("Imprimindo a lista inteira: \n");
     imprima(head->seg);
     imprima(cabeca->seg);
-   for (t = head->seg; t->cont != 3; t = t->seg) {
-       printf("%d %d \n", t->cont, t->seg->cont);
-   }
+
+    // Vetor e Lista
+    celula *lista;
+    lista = malloc((n+1) * sizeof(celula));
+    printf("TESTANDO");
+    printf(buscaF(4, head));
+
+    for (i = 0; i < n; i++) {
+        //(lista+i)->seg = lista+i+1;
+        lista[i].seg = &lista[i+1]; // Igual a: (lista+i)->seg = lista+i+1; // NÃO FUNCIONA
+        lista[i+1].seg = NULL;
+        lista[i+1].cont = i+1;
+    }
+    printf("Vetor e lista: ");
+    imprima(lista->seg);
 }
 void insere(int y, celula *p) {
     celula *nova;

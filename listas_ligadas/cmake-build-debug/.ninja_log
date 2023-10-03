@@ -1,3 +1,7 @@
 # ninja log v5
-1	32	1695751102364897510	CMakeFiles/listas_ligadas.dir/main.c.o	173c5addc1de82c9
-32	51	1695751102384897714	listas_ligadas	e9673fdc3933c42a
+0	32	1696346948458471259	build.ninja	8e20f7867714264f
+0	48	1696346726104590635	CMakeFiles/listas_ligadas.dir/main.c.o	b4c2e858a491338a
+1	41	1696346456022667831	CMakeFiles/listas_ligadas.dir/exercicios_Feofiloff.c.o	5f016cf0df19c4a0
+39	66	1696346611555715635	listas_ligadas	cd14e0cb15b521c2
+1	31	1696347045071344841	CMakeFiles/listas_ligadas.dir/exercicios_Feofiloff.c.o	5f016cf0df19c4a0
+0	51	1696347045091345025	CMakeFiles/listas_ligadas.dir/main.c.o	b4c2e858a491338a

@@ -116,8 +116,8 @@ int main() {
 
     celula *teste;
     printf("TESTANDO:\n");
-    teste = minimoI(cabeca);
-    printf(teste->cont);
+    teste = buscaComCabeca(4, head);
+    printf("%d\n", &teste->cont);
 
     // Vetor e Lista
     celula *lista;
@@ -128,7 +128,7 @@ int main() {
         lista[i+1].seg = NULL;
         lista[i+1].cont = i+1;
     }
-    printf("\nVetor e lista: ");
+    printf("Vetor e lista: ");
     imprima(lista->seg);
 }
 void insere(int y, celula *p) {

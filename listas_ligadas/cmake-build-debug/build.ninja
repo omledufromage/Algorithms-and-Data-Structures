@@ -55,12 +55,6 @@ build CMakeFiles/listas_ligadas.dir/main.c.o: C_COMPILER__listas_ligadas_Debug /
   OBJECT_DIR = CMakeFiles/listas_ligadas.dir
   OBJECT_FILE_DIR = CMakeFiles/listas_ligadas.dir
 
-build CMakeFiles/listas_ligadas.dir/exercicios_Feofiloff.c.o: C_COMPILER__listas_ligadas_Debug /home/mreverbel/Studies/Algorithms$ and$ Data$ Structures/listas_ligadas/exercicios_Feofiloff.c || cmake_object_order_depends_target_listas_ligadas
-  DEP_FILE = CMakeFiles/listas_ligadas.dir/exercicios_Feofiloff.c.o.d
-  FLAGS = -g -std=gnu99
-  OBJECT_DIR = CMakeFiles/listas_ligadas.dir
-  OBJECT_FILE_DIR = CMakeFiles/listas_ligadas.dir
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target listas_ligadas
@@ -69,7 +63,7 @@ build CMakeFiles/listas_ligadas.dir/exercicios_Feofiloff.c.o: C_COMPILER__listas
 #############################################
 # Link the executable listas_ligadas
 
-build listas_ligadas: C_EXECUTABLE_LINKER__listas_ligadas_Debug CMakeFiles/listas_ligadas.dir/main.c.o CMakeFiles/listas_ligadas.dir/exercicios_Feofiloff.c.o
+build listas_ligadas: C_EXECUTABLE_LINKER__listas_ligadas_Debug CMakeFiles/listas_ligadas.dir/main.c.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/listas_ligadas.dir
   POST_BUILD = :

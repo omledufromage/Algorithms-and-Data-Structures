@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 #include "item.h"
@@ -8,17 +7,23 @@
 
 int main() {
 
-    int n, i;
+    int n, prim, ult, i;
 
-    printf("Digite o tamanho da lista: ");
-    scanf("%d", &n);
+    printf("Type the first and last numbers of the list: ");
+    scanf("%d", &prim);
+    scanf("%d", &ult);
+    if (ult < prim) {
+        n = prim;
+        prim = ult;
+        ult = n;
+    }
 
     celula *head, *t;
     head = mallocX( sizeof(celula));
     head->seg = NULL;
 
     //O primeiro elemento adicionado é o último elemento da lista.//
-    for (i = 1; i <= n ; i++){
+    for (i = prim; i <= ult ; i++){
         t = mallocX(sizeof(celula));
         t->cont = i;
         t->seg = head->seg;
@@ -31,7 +36,7 @@ int main() {
     last = cabeca;
     last->seg = NULL;
     //O primeiro elemento adicionado é o primeiro elemento da lista//
-    for (i = 1; i <= n; i++) {
+    for (i = prim; i <= ult; i++) {
         last->seg = mallocX(sizeof(celula));
         last = last->seg;
         last->cont = i;
@@ -43,12 +48,33 @@ int main() {
     imprima(cabeca->seg);
 
     celula *teste;
-    printf("TESTANDO:\n");
+    printf("The smallest term in the list is:\n");
     teste = minimoI(cabeca);
     printf("%d\n", teste->cont);
 
-    // Vetor e Lista
+    printf("The smallest term in the list is:\n");
+    teste = minimoR(head);
+    printf("%d\n", teste->cont);
+
+    printf("Would you like to find out whether a specific number is in the list? Enter the number: ");
+    scanf("%d", &n);
+    teste = buscaComCabeca(n, cabeca);
+    if (teste != NULL)
+        printf("%d is in the list!\n\n", teste->cont);
+    else
+        printf("%d is not in the list.\n\n", n);
+
+    printf("Would you like to find out whether another number is in the list? Enter the number: ");
+    scanf("%d", &n);
+    teste = buscaSemCabeca(n, head);
+    if (teste != NULL)
+        printf("%d is in the list!\n\n", teste->cont);
+    else
+        printf("%d is not in the list.\n\n", n);
+
+    // Vetor e Lista (just an exercise)
     celula *lista;
+    n = ult - prim;
     lista = mallocX((n+1) * sizeof(celula));
     for (i = 0; i < n; i++) {
         //(lista+i)->seg = lista+i+1;

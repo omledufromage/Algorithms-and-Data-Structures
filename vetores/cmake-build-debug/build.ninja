@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /home/mreverbel/CLionProjects/vetores/cmake-build-debug/
+cmake_ninja_workdir = /home/mreverbel/Studies/Algorithms$ and$ Data$ Structures/vetores/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target vetores
 
@@ -49,7 +49,7 @@ cmake_ninja_workdir = /home/mreverbel/CLionProjects/vetores/cmake-build-debug/
 
 build cmake_object_order_depends_target_vetores: phony || CMakeFiles/vetores.dir
 
-build CMakeFiles/vetores.dir/main.c.o: C_COMPILER__vetores_Debug /home/mreverbel/CLionProjects/vetores/main.c || cmake_object_order_depends_target_vetores
+build CMakeFiles/vetores.dir/main.c.o: C_COMPILER__vetores_Debug /home/mreverbel/Studies/Algorithms$ and$ Data$ Structures/vetores/main.c || cmake_object_order_depends_target_vetores
   DEP_FILE = CMakeFiles/vetores.dir/main.c.o.d
   FLAGS = -g -std=gnu99
   OBJECT_DIR = CMakeFiles/vetores.dir
@@ -79,7 +79,7 @@ build vetores: C_EXECUTABLE_LINKER__vetores_Debug CMakeFiles/vetores.dir/main.c.
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/mreverbel/CLionProjects/vetores/cmake-build-debug && /opt/clion-2022.2.1/bin/cmake/linux/bin/ccmake -S/home/mreverbel/CLionProjects/vetores -B/home/mreverbel/CLionProjects/vetores/cmake-build-debug
+  COMMAND = cd "/home/mreverbel/Studies/Algorithms and Data Structures/vetores/cmake-build-debug" && /opt/clion-2022.2.1/bin/cmake/linux/bin/ccmake -S"/home/mreverbel/Studies/Algorithms and Data Structures/vetores" -B"/home/mreverbel/Studies/Algorithms and Data Structures/vetores/cmake-build-debug"
   DESC = Running CMake cache editor...
   pool = console
   restat = 1
@@ -91,7 +91,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/mreverbel/CLionProjects/vetores/cmake-build-debug && /opt/clion-2022.2.1/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/mreverbel/CLionProjects/vetores -B/home/mreverbel/CLionProjects/vetores/cmake-build-debug
+  COMMAND = cd "/home/mreverbel/Studies/Algorithms and Data Structures/vetores/cmake-build-debug" && /opt/clion-2022.2.1/bin/cmake/linux/bin/cmake --regenerate-during-build -S"/home/mreverbel/Studies/Algorithms and Data Structures/vetores" -B"/home/mreverbel/Studies/Algorithms and Data Structures/vetores/cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -107,7 +107,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 
 #############################################
-# Folder: /home/mreverbel/CLionProjects/vetores/cmake-build-debug
+# Folder: /home/mreverbel/Studies/Algorithms and Data Structures/vetores/cmake-build-debug
 
 build all: phony vetores
 

@@ -7,6 +7,7 @@
 #include "fila.h"
 #include "malocc.h"
 
+#define Item int;
 typedef struct celula {
     Item conteudo;
     struct celula* prox;

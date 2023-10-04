@@ -2,12 +2,7 @@
 // Created by mreverbel on 10/3/23.
 //
 #include <stdio.h>
-
-typedef struct cel celula;
-struct cel {
-    int cont;
-    struct cel *seg;
-};
+#include "exercicios_Feofiloff.h"
 
 // 1)
 // Critique a funcão abaixo.  Ao receber uma lista encadeada com cabeça e um inteiro x, ela promete devolver o
@@ -25,12 +20,13 @@ celula *buscaF(int x, celula *ini) {
     else return NULL;
 }
 
-// A funcão acima deve funcionar, mas a solućão não é elegante, uma vez que a variável 'achou' pode ser inteiramente
-// descartada e que podemos dar 'return p' mesmo quando não achamos x, considerando que p será NULL:
+// A funcão não funciona pois devolve a celula seguinta a desejada. Além disso, a solućão não é elegante, uma vez que a
+// variável 'achou' pode ser inteiramente descartada e que podemos dar 'return p' mesmo quando não achamos x, considerando
+// que p será NULL. Mas ela incrementa p = p->seg depois que achou a celula correta, e acaba devolvendo a celula errada:
 celula *buscaComCabeca(int x, celula *ini) {
     celula *p;
     p = ini->seg;
-    while (p != NULL && p->cont != x)
+    while (p != NULL && p->cont != x) // "Avaliaćão em curto circuito". Nem olha para a segunda avaliaćão se a primeira for falsa.
         p = p->seg;
     return p;
 }

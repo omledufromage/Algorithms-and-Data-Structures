@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /home/mreverbel/Studies/Algorithms$ in$ C/EP2_Polinomios/cmake-build-debug/
+cmake_ninja_workdir = /home/mreverbel/Studies/Algorithms$ and$ Data$ Structures/EP2_Polinomios/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target EP2_Polinomios
 
@@ -49,7 +49,7 @@ cmake_ninja_workdir = /home/mreverbel/Studies/Algorithms$ in$ C/EP2_Polinomios/c
 
 build cmake_object_order_depends_target_EP2_Polinomios: phony || CMakeFiles/EP2_Polinomios.dir
 
-build CMakeFiles/EP2_Polinomios.dir/main.c.o: C_COMPILER__EP2_Polinomios_Debug /home/mreverbel/Studies/Algorithms$ in$ C/EP2_Polinomios/main.c || cmake_object_order_depends_target_EP2_Polinomios
+build CMakeFiles/EP2_Polinomios.dir/main.c.o: C_COMPILER__EP2_Polinomios_Debug /home/mreverbel/Studies/Algorithms$ and$ Data$ Structures/EP2_Polinomios/main.c || cmake_object_order_depends_target_EP2_Polinomios
   DEP_FILE = CMakeFiles/EP2_Polinomios.dir/main.c.o.d
   FLAGS = -g -std=gnu99
   OBJECT_DIR = CMakeFiles/EP2_Polinomios.dir
@@ -57,7 +57,7 @@ build CMakeFiles/EP2_Polinomios.dir/main.c.o: C_COMPILER__EP2_Polinomios_Debug /
   TARGET_COMPILE_PDB = CMakeFiles/EP2_Polinomios.dir/
   TARGET_PDB = EP2_Polinomios.pdb
 
-build CMakeFiles/EP2_Polinomios.dir/polinomio.c.o: C_COMPILER__EP2_Polinomios_Debug /home/mreverbel/Studies/Algorithms$ in$ C/EP2_Polinomios/polinomio.c || cmake_object_order_depends_target_EP2_Polinomios
+build CMakeFiles/EP2_Polinomios.dir/polinomio.c.o: C_COMPILER__EP2_Polinomios_Debug /home/mreverbel/Studies/Algorithms$ and$ Data$ Structures/EP2_Polinomios/polinomio.c || cmake_object_order_depends_target_EP2_Polinomios
   DEP_FILE = CMakeFiles/EP2_Polinomios.dir/polinomio.c.o.d
   FLAGS = -g -std=gnu99
   OBJECT_DIR = CMakeFiles/EP2_Polinomios.dir
@@ -65,7 +65,7 @@ build CMakeFiles/EP2_Polinomios.dir/polinomio.c.o: C_COMPILER__EP2_Polinomios_De
   TARGET_COMPILE_PDB = CMakeFiles/EP2_Polinomios.dir/
   TARGET_PDB = EP2_Polinomios.pdb
 
-build CMakeFiles/EP2_Polinomios.dir/fila_lista_ligada.c.o: C_COMPILER__EP2_Polinomios_Debug /home/mreverbel/Studies/Algorithms$ in$ C/EP2_Polinomios/fila_lista_ligada.c || cmake_object_order_depends_target_EP2_Polinomios
+build CMakeFiles/EP2_Polinomios.dir/fila_lista_ligada.c.o: C_COMPILER__EP2_Polinomios_Debug /home/mreverbel/Studies/Algorithms$ and$ Data$ Structures/EP2_Polinomios/fila_lista_ligada.c || cmake_object_order_depends_target_EP2_Polinomios
   DEP_FILE = CMakeFiles/EP2_Polinomios.dir/fila_lista_ligada.c.o.d
   FLAGS = -g -std=gnu99
   OBJECT_DIR = CMakeFiles/EP2_Polinomios.dir
@@ -73,7 +73,7 @@ build CMakeFiles/EP2_Polinomios.dir/fila_lista_ligada.c.o: C_COMPILER__EP2_Polin
   TARGET_COMPILE_PDB = CMakeFiles/EP2_Polinomios.dir/
   TARGET_PDB = EP2_Polinomios.pdb
 
-build CMakeFiles/EP2_Polinomios.dir/malocc.c.o: C_COMPILER__EP2_Polinomios_Debug /home/mreverbel/Studies/Algorithms$ in$ C/EP2_Polinomios/malocc.c || cmake_object_order_depends_target_EP2_Polinomios
+build CMakeFiles/EP2_Polinomios.dir/malocc.c.o: C_COMPILER__EP2_Polinomios_Debug /home/mreverbel/Studies/Algorithms$ and$ Data$ Structures/EP2_Polinomios/malocc.c || cmake_object_order_depends_target_EP2_Polinomios
   DEP_FILE = CMakeFiles/EP2_Polinomios.dir/malocc.c.o.d
   FLAGS = -g -std=gnu99
   OBJECT_DIR = CMakeFiles/EP2_Polinomios.dir
@@ -103,7 +103,7 @@ build EP2_Polinomios: C_EXECUTABLE_LINKER__EP2_Polinomios_Debug CMakeFiles/EP2_P
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd "/home/mreverbel/Studies/Algorithms in C/EP2_Polinomios/cmake-build-debug" && /opt/clion-2022.2.1/bin/cmake/linux/bin/ccmake -S"/home/mreverbel/Studies/Algorithms in C/EP2_Polinomios" -B"/home/mreverbel/Studies/Algorithms in C/EP2_Polinomios/cmake-build-debug"
+  COMMAND = cd "/home/mreverbel/Studies/Algorithms and Data Structures/EP2_Polinomios/cmake-build-debug" && /opt/clion-2022.2.1/bin/cmake/linux/bin/ccmake -S"/home/mreverbel/Studies/Algorithms and Data Structures/EP2_Polinomios" -B"/home/mreverbel/Studies/Algorithms and Data Structures/EP2_Polinomios/cmake-build-debug"
   DESC = Running CMake cache editor...
   pool = console
   restat = 1
@@ -115,7 +115,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd "/home/mreverbel/Studies/Algorithms in C/EP2_Polinomios/cmake-build-debug" && /opt/clion-2022.2.1/bin/cmake/linux/bin/cmake --regenerate-during-build -S"/home/mreverbel/Studies/Algorithms in C/EP2_Polinomios" -B"/home/mreverbel/Studies/Algorithms in C/EP2_Polinomios/cmake-build-debug"
+  COMMAND = cd "/home/mreverbel/Studies/Algorithms and Data Structures/EP2_Polinomios/cmake-build-debug" && /opt/clion-2022.2.1/bin/cmake/linux/bin/cmake --regenerate-during-build -S"/home/mreverbel/Studies/Algorithms and Data Structures/EP2_Polinomios" -B"/home/mreverbel/Studies/Algorithms and Data Structures/EP2_Polinomios/cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -131,7 +131,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 
 #############################################
-# Folder: /home/mreverbel/Studies/Algorithms in C/EP2_Polinomios/cmake-build-debug
+# Folder: /home/mreverbel/Studies/Algorithms and Data Structures/EP2_Polinomios/cmake-build-debug
 
 build all: phony EP2_Polinomios
 

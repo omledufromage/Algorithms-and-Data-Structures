@@ -3,7 +3,7 @@
 //
 
 #include <stdio.h>
-#include "malocc.h"
+#include "mallocc.h"
 
 void *mallocX(size_t size) {
     void *p;

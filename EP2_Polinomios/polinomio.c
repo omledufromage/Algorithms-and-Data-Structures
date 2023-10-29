@@ -1,14 +1,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "malocc.h"
+#include "mallocc.h"
 #include "polinomio.h"
+#include "pilha.h"
+#include "item.h"
 
-typedef struct termo {
-    double coef;
-    int exp;
-    struct termo *next;
-} Termo;
 
 static Termo *lista_livre = NULL;
 
@@ -62,7 +59,13 @@ static void intercala(Polinomio p, Polinomio q) {
     }
 }
 static Termo *aloca_termo() {
+    Polinomio p;
 
+    if (lista_livre == NULL)
+        p = mallocX(sizeof(Polinomio));
+    else
+        p = desempilha();
+    return
 }
 
 static void libera_termo(Termo *p) {
@@ -78,8 +81,8 @@ Polinomio cria_monomio(double coef, int exp) {
         p = NULL;
     }
     else {
-        p->conteudo.coef = coef;
-        p->conteudo.exp = exp;
+        p->coef = coef;
+        p->exp = exp;
         p->next = NULL;
     }
     return p;

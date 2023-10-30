@@ -43,53 +43,30 @@ static void libera_termo(Termo *novo) {
 }
 
 static Polinomio intercala(Polinomio p, Polinomio q, int lambda) {
-    Termo *s, *t, *w, *first, *last;
-    t = p;
-    s = q;
+    Termo head;
+    Termo *w, *first = &head, *last;
 
-    if (t == NULL && s == NULL)
-        return NULL;
+    first->next = NULL;
 
-    if ((s == NULL && t != NULL) || t->exp > s->exp ) {
-        first = cria_monomio(t->coef, t->exp);
-        t = t->next;
-    } else if ((t == NULL && s != NULL) || t->exp < s->exp || t == NULL) {
-        first = cria_monomio((lambda * s->coef), s->exp);
-        s = s->next;
-    } else {
-        first = cria_monomio(t->coef + lambda * s->coef, t->exp);
-        t = t->next;
-        s = s->next;
-    }
-
-    for (last = first; t != NULL && s != NULL; last->next = w, last = last->next) {
-        if (t->exp > s->exp) {
-            w = cria_monomio(t->coef, t->exp);
-            t = t->next;
-        } else if (t->exp < s->exp) {
-            w = cria_monomio(lambda * s->coef, s->exp);
-            s = s->next;
+    for (last = first; p != NULL && q != NULL; last->next = w, last = last->next)
+        if (p->exp > q->exp) {
+            w = cria_monomio(p->coef, p->exp);
+            p = p->next;
+        } else if (p->exp < q->exp) {
+            w = cria_monomio(lambda * q->coef, q->exp);
+            q = q->next;
         } else {
-            w = cria_monomio(t->coef + lambda * s->coef, t->exp);
-            t = t->next;
-            s = s->next;
+            w = cria_monomio(p->coef + lambda * q->coef, p->exp);
+            p = p->next;
+            q = q->next;
         }
-    }
-    while (t != NULL) {
-        w = cria_monomio(t->coef, t->exp);
-        t = t->next;
-        last->next = w;
-        last = last->next;
-    }
-    while (s != NULL) {
-        w = cria_monomio(lambda * s->coef, s->exp);
-        s = s->next;
-        last->next = w;
-        last = last->next;
-    }
+    for (;p != NULL; p = p->next, last->next = w, last = last->next)
+        w = cria_monomio(p->coef, p->exp);
+    for (;q != NULL; q = q->next, last->next = w, last = last->next)
+        w = cria_monomio(lambda * q->coef, q->exp);
     last->next = NULL;
 
-    return first;
+    return first->next;
 }
 
 Polinomio cria_monomio(double coef, int exp) {
@@ -113,28 +90,16 @@ Polinomio cria_monomio(double coef, int exp) {
 
 Polinomio soma(Polinomio p, Polinomio q) {
     Polinomio r;
-    int lambda = 1;
 
-    if (p != NULL && q != NULL)
-        r = intercala(p, q, lambda);
-    else if (p == NULL)
-        r = copia(q);
-    else
-        r = copia(p);
+    r = intercala(p, q, 1);
 
     return r;
 }
 
 Polinomio subtrai(Polinomio p, Polinomio q) {
     Polinomio r;
-    int lambda = -1;
 
-    if (p != NULL && q != NULL)
-        r = intercala(p, q, lambda);
-    else if (p == NULL)
-        r = copia(q);
-    else
-        r = copia(p);
+    r = intercala(p, q, -1);
 
     return r;
 }
@@ -155,6 +120,22 @@ Polinomio oposto(Polinomio p) {
 
     return subtrai(NULL, p);
 }
+/*
+Polinomio oposto(Polinomio p) {
+    Termo head;
+    Polinomio s, first = &head, last;
+
+    if (p == NULL)
+        return NULL;
+
+    for (last = first; p != NULL; p = p->next, last->next = s, last = last->next) {
+        s = cria_monomio((-1)*p->coef, p->exp);
+    }
+    s->next = NULL;
+
+    return first->next;
+}
+*/
 
 Polinomio deriva(Polinomio p) {
     Polinomio q, s , first = NULL, last;
@@ -178,25 +159,22 @@ Polinomio deriva(Polinomio p) {
 
 Polinomio copia(Polinomio p) {
 
-    return soma(p, NULL);
+    return soma(NULL, p);
 }
-/*    Polinomio q, s, first, last;
+/*
+Polinomio copia(Polinomio p) {
+    Termo head;
+    Polinomio s, first = &head, last;
 
     if (p == NULL)
         return NULL;
 
-    first = cria_monomio(p->coef, p->exp);
-    last = first;
-    if (p->next == NULL)
-        return first;
-
-    for (q = p->next; q != NULL; q = q->next, last = last->next) {
-        s = cria_monomio(q->coef, q->exp);
-        last->next = s;
+    for (last = first; p != NULL; p = p->next, last->next = s, last = last->next) {
+        s = cria_monomio(p->coef, p->exp);
     }
     s->next = NULL;
 
-    return first;
+    return first->next;
 }
 */
 

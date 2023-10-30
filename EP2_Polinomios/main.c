@@ -11,13 +11,13 @@ int main() {
     int i, N = 4;
     Polinomio q, p, r, s;
 
-    s = soma(cria_monomio(0, 5), cria_monomio(1, 4));
+    s = soma(cria_monomio(3, 5), cria_monomio(1, 4));
     for (p = s; p != NULL; p = p->next)
         printf("%.2fx^%d +", p->coef, p->exp);
     printf("\n");
 
     r = soma(cria_monomio(1, 5),cria_monomio(1, -1));
-    q = soma(r, s);
+    q = subtrai(s, r);
     for (p = q; p != NULL; p = p->next)
         printf("%.2fx^%d + ", p->coef, p->exp);
 

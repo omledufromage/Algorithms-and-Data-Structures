@@ -29,17 +29,18 @@ static Polinomio intercala(Polinomio p, Polinomio q) {
             r = w;
             t = t->next;
         } else if (t->exp < s->exp) {
-            w = cria_monomio(s->coef, s->exp);
+            if (sum == TRUE)
+                w = cria_monomio(s->coef, s->exp);
+            else
+                w = cria_monomio((-1) * s->coef, s->exp);
             w->next = r;
             r = w;
             s = s->next;
         } else {
-            if (sum == TRUE) {
-                w = cria_monomio(s->coef + t->coef, t->exp);
-            }
-            else {
-                w = cria_monomio((-1) * (s->coef + t->coef), t->exp);
-            }
+            if (sum == TRUE)
+                w = cria_monomio(t->coef + s->coef, t->exp);
+            else
+                w = cria_monomio(t->coef - s->coef, t->exp);
             w->next = r;
             r = w;
             t = t->next;
@@ -53,7 +54,10 @@ static Polinomio intercala(Polinomio p, Polinomio q) {
         t = t->next;
     }
     while (s != NULL) {
-        w = cria_monomio(s->coef, s->exp);
+        if (sum)
+            w = cria_monomio(s->coef, s->exp);
+        else
+            w = cria_monomio((-1) * s->coef, s->exp);
         w->next = r;
         r = w;
         s = s->next;
@@ -100,6 +104,10 @@ static void libera_termo(Termo *novo) {
 Polinomio cria_monomio(double coef, int exp) {
     Polinomio p;
 
+    if (exp < 0) {
+        printf("Não é um monômio!");
+        exit(EXIT_FAILURE);
+    }
     p = aloca_termo();
 
     if (coef == 0) {

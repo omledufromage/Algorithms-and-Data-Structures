@@ -125,9 +125,7 @@ Polinomio oposto(Polinomio p) {
     Termo head;
     Polinomio s, first = &head, last;
 
-    if (p == NULL)
-        return NULL;
-
+    first->next = NULL;
     for (last = first; p != NULL; p = p->next, last->next = s, last = last->next) {
         s = cria_monomio((-1)*p->coef, p->exp);
     }
@@ -138,23 +136,20 @@ Polinomio oposto(Polinomio p) {
 */
 
 Polinomio deriva(Polinomio p) {
-    Polinomio q, s , first = NULL, last;
+    Termo head;
+    Polinomio s, first = &head, last;
 
-    if (p->exp != 0) {
-        first = cria_monomio(p->exp * p->coef, p->exp - 1);
-        last = first;
-
-        for (q = p->next; q != NULL; q = q->next) {
-            if (q->exp != 0) {
-                s = cria_monomio(q->exp * q->coef, q->exp - 1);
-                last->next = s;
-                last = last->next;
-            }
+    first->next = NULL;
+    for (last = first; p != NULL;  p = p->next) {
+        if (p->exp != 0) {
+            s = cria_monomio(p->exp * p->coef, p->exp - 1);
+            last->next = s;
+            last = last->next;
         }
     }
     s->next = NULL;
 
-    return first;
+    return first->next;
 }
 
 Polinomio copia(Polinomio p) {
@@ -166,9 +161,7 @@ Polinomio copia(Polinomio p) {
     Termo head;
     Polinomio s, first = &head, last;
 
-    if (p == NULL)
-        return NULL;
-
+    first->next = NULL;
     for (last = first; p != NULL; p = p->next, last->next = s, last = last->next) {
         s = cria_monomio(p->coef, p->exp);
     }

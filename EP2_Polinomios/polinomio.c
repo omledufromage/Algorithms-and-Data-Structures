@@ -20,15 +20,15 @@ static Polinomio intercala(Polinomio p, Polinomio q) {
     Termo *s, *t, *w, *r;
     t = p;
     s = q;
-    r = NULL; // r é o topo da pilha, que servirá de ponteiro para o polinomio intercalado.
+    r = NULL; // r é o topo da pilha, que servirá de ponteiro para o polinomio intercalado, mas em ordem reversa.
 
     while (s != NULL && t != NULL) {
-        if (t->exp < s->exp) {
+        if (t->exp > s->exp) {
             w = cria_monomio(t->coef, t->exp);
             w->next = r;
             r = w;
             t = t->next;
-        } else if (t->exp > s->exp) {
+        } else if (t->exp < s->exp) {
             w = cria_monomio(s->coef, s->exp);
             w->next = r;
             r = w;
@@ -58,8 +58,14 @@ static Polinomio intercala(Polinomio p, Polinomio q) {
         r = w;
         s = s->next;
     }
+    s = NULL;
+    for (t = r; t != NULL; t = t->next) {
+        w = cria_monomio(t->coef, t->exp);
+        w->next = s;
+        s = w;
+    }
 
-    return r;
+    return s;
 }
 
 static Termo *aloca_termo() {

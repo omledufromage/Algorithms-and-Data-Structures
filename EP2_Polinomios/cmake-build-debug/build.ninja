@@ -41,47 +41,47 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /home/mreverbel/Studies/Algorithms$ and$ Data$ Structures/EP2_Polinomios/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target CLIENTE
+# Object build statements for EXECUTABLE target EP2_Polinomios
 
 
 #############################################
-# Order-only phony target for CLIENTE
+# Order-only phony target for EP2_Polinomios
 
-build cmake_object_order_depends_target_CLIENTE: phony || CMakeFiles/CLIENTE.dir
+build cmake_object_order_depends_target_EP2_Polinomios: phony || CMakeFiles/EP2_Polinomios.dir
 
-build CMakeFiles/CLIENTE.dir/cliente.c.o: C_COMPILER__CLIENTE_Debug /home/mreverbel/Studies/Algorithms$ and$ Data$ Structures/EP2_Polinomios/cliente.c || cmake_object_order_depends_target_CLIENTE
-  DEP_FILE = CMakeFiles/CLIENTE.dir/cliente.c.o.d
+build CMakeFiles/EP2_Polinomios.dir/main.c.o: C_COMPILER__EP2_Polinomios_Debug /home/mreverbel/Studies/Algorithms$ and$ Data$ Structures/EP2_Polinomios/main.c || cmake_object_order_depends_target_EP2_Polinomios
+  DEP_FILE = CMakeFiles/EP2_Polinomios.dir/main.c.o.d
   FLAGS = -g -std=gnu99
-  OBJECT_DIR = CMakeFiles/CLIENTE.dir
-  OBJECT_FILE_DIR = CMakeFiles/CLIENTE.dir
+  OBJECT_DIR = CMakeFiles/EP2_Polinomios.dir
+  OBJECT_FILE_DIR = CMakeFiles/EP2_Polinomios.dir
 
-build CMakeFiles/CLIENTE.dir/mallocc.c.o: C_COMPILER__CLIENTE_Debug /home/mreverbel/Studies/Algorithms$ and$ Data$ Structures/EP2_Polinomios/mallocc.c || cmake_object_order_depends_target_CLIENTE
-  DEP_FILE = CMakeFiles/CLIENTE.dir/mallocc.c.o.d
+build CMakeFiles/EP2_Polinomios.dir/mallocc.c.o: C_COMPILER__EP2_Polinomios_Debug /home/mreverbel/Studies/Algorithms$ and$ Data$ Structures/EP2_Polinomios/mallocc.c || cmake_object_order_depends_target_EP2_Polinomios
+  DEP_FILE = CMakeFiles/EP2_Polinomios.dir/mallocc.c.o.d
   FLAGS = -g -std=gnu99
-  OBJECT_DIR = CMakeFiles/CLIENTE.dir
-  OBJECT_FILE_DIR = CMakeFiles/CLIENTE.dir
+  OBJECT_DIR = CMakeFiles/EP2_Polinomios.dir
+  OBJECT_FILE_DIR = CMakeFiles/EP2_Polinomios.dir
 
-build CMakeFiles/CLIENTE.dir/pilha_lista_ligada.c.o: C_COMPILER__CLIENTE_Debug /home/mreverbel/Studies/Algorithms$ and$ Data$ Structures/EP2_Polinomios/pilha_lista_ligada.c || cmake_object_order_depends_target_CLIENTE
-  DEP_FILE = CMakeFiles/CLIENTE.dir/pilha_lista_ligada.c.o.d
+build CMakeFiles/EP2_Polinomios.dir/polinomio.c.o: C_COMPILER__EP2_Polinomios_Debug /home/mreverbel/Studies/Algorithms$ and$ Data$ Structures/EP2_Polinomios/polinomio.c || cmake_object_order_depends_target_EP2_Polinomios
+  DEP_FILE = CMakeFiles/EP2_Polinomios.dir/polinomio.c.o.d
   FLAGS = -g -std=gnu99
-  OBJECT_DIR = CMakeFiles/CLIENTE.dir
-  OBJECT_FILE_DIR = CMakeFiles/CLIENTE.dir
+  OBJECT_DIR = CMakeFiles/EP2_Polinomios.dir
+  OBJECT_FILE_DIR = CMakeFiles/EP2_Polinomios.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target CLIENTE
+# Link build statements for EXECUTABLE target EP2_Polinomios
 
 
 #############################################
-# Link the executable CLIENTE
+# Link the executable EP2_Polinomios
 
-build CLIENTE: C_EXECUTABLE_LINKER__CLIENTE_Debug CMakeFiles/CLIENTE.dir/cliente.c.o CMakeFiles/CLIENTE.dir/mallocc.c.o CMakeFiles/CLIENTE.dir/pilha_lista_ligada.c.o
+build EP2_Polinomios: C_EXECUTABLE_LINKER__EP2_Polinomios_Debug CMakeFiles/EP2_Polinomios.dir/main.c.o CMakeFiles/EP2_Polinomios.dir/mallocc.c.o CMakeFiles/EP2_Polinomios.dir/polinomio.c.o
   FLAGS = -g
-  OBJECT_DIR = CMakeFiles/CLIENTE.dir
+  OBJECT_DIR = CMakeFiles/EP2_Polinomios.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = CLIENTE
-  TARGET_PDB = CLIENTE.dbg
+  TARGET_FILE = EP2_Polinomios
+  TARGET_PDB = EP2_Polinomios.dbg
 
 
 #############################################
@@ -118,7 +118,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/mreverbel/Studies/Algorithms and Data Structures/EP2_Polinomios/cmake-build-debug
 
-build all: phony CLIENTE
+build all: phony EP2_Polinomios
 
 # =============================================================================
 # Built-in targets

@@ -1,34 +1,67 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "mallocc.h"
-#include "item.h"
 #include "polinomio.h"
+#define N 100
+#define TRUE 1
+#define FALSE 0
+
+typedef struct termo {
+    double coef;
+    int exp;
+    struct termo *next;
+} Termo;
 
 static Termo *lista_livre = NULL;
+static int n_lista = 0;
 
-/*
-static void intercala(Polinomio p, Polinomio q) {
-    Termo *t, *w, *r;
+static int sum = TRUE;
+static Polinomio intercala(Polinomio p, Polinomio q) {
+    Termo *s, *t, *w, *r;
+    t = p;
+    s = q;
+    r = NULL; // r é o topo da pilha, que servirá de ponteiro para o polinomio intercalado.
 
-    while (t->next != NULL && w->next != NULL) {
-        if (t->exp < w->exp) {
-            while ( t->next != NULL && t->next->exp < w->exp )
-                t = t->next;
-            r = t->next;
-            t->next = w;
-            t = r;
-        }
-        else if (t->exp > w->exp) {
-            while (w->next != NULL && w->next->exp < t->exp )
-                w = w->next;
-            r = w->next;
-            w->next = t;
-            w = r;
+    while (s != NULL && t != NULL) {
+        if (t->exp < s->exp) {
+            w = cria_monomio(t->coef, t->exp);
+            w->next = r;
+            r = w;
+            t = t->next;
+        } else if (t->exp > s->exp) {
+            w = cria_monomio(s->coef, s->exp);
+            w->next = r;
+            r = w;
+            s = s->next;
+        } else {
+            if (sum == TRUE) {
+                w = cria_monomio(s->coef + t->coef, t->exp);
+            }
+            else {
+                w = cria_monomio((-1) * (s->coef + t->coef), t->exp);
+            }
+            w->next = r;
+            r = w;
+            t = t->next;
+            s = s->next;
         }
     }
+    while (t != NULL) {
+        w = cria_monomio(t->coef, t->exp);
+        w->next = r;
+        r = w;
+        t = t->next;
+    }
+    while (s != NULL) {
+        w = cria_monomio(s->coef, s->exp);
+        w->next = r;
+        r = w;
+        s = s->next;
+    }
+
+    return r;
 }
-*/
+
 static Termo *aloca_termo() {
     Termo *reciclado;
 
@@ -41,20 +74,27 @@ static Termo *aloca_termo() {
         }
         reciclado = lista_livre;
         lista_livre = lista_livre->next;
+        n_lista--;
     }
     return reciclado;
 }
 
 static void libera_termo(Termo *novo) {
 
-    novo->next = lista_livre;
-    lista_livre = novo;
+    if (n_lista < N) {
+        novo->next = lista_livre;
+        lista_livre = novo;
+        n_lista++;
+    } else {
+        free(novo);
+        printf("Increase size if this warning is too frequent!");
+    }
 }
 
 Polinomio cria_monomio(double coef, int exp) {
     Polinomio p;
 
-    p = mallocX(sizeof(Polinomio));
+    p = aloca_termo();
 
     if (coef == 0) {
         p = NULL;
@@ -70,12 +110,19 @@ Polinomio cria_monomio(double coef, int exp) {
 Polinomio soma(Polinomio p, Polinomio q) {
     Polinomio r;
 
+    sum = TRUE;
+    r = intercala(p, q);
 
     return r;
 }
 
 Polinomio subtrai(Polinomio p, Polinomio q) {
+    Polinomio r;
 
+    sum = FALSE;
+    r = intercala(p, q);
+
+    return r;
 }
 
 Polinomio multiplica(Polinomio p, Polinomio q) {
@@ -116,8 +163,7 @@ void imprime(Polinomio p, FILE *arq) {
 
 void libera(Polinomio p) {
     Termo *i;
-
-    while (p->next != NULL) {
+    while (p != NULL) {
         i = p;
         p = p->next;
         libera_termo(i);

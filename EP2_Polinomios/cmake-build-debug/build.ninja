@@ -77,6 +77,7 @@ build CMakeFiles/EP2_Polinomios.dir/polinomio.c.o: C_COMPILER__EP2_Polinomios_De
 
 build EP2_Polinomios: C_EXECUTABLE_LINKER__EP2_Polinomios_Debug CMakeFiles/EP2_Polinomios.dir/main.c.o CMakeFiles/EP2_Polinomios.dir/mallocc.c.o CMakeFiles/EP2_Polinomios.dir/polinomio.c.o
   FLAGS = -g
+  LINK_LIBRARIES = -lm
   OBJECT_DIR = CMakeFiles/EP2_Polinomios.dir
   POST_BUILD = :
   PRE_LINK = :

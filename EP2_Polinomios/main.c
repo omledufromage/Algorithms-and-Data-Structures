@@ -53,9 +53,10 @@ int main() {
         if (p->next != NULL)
             printf(" + ");
     }
+    printf("\nf(3): %f", calcula(s, 3));
 
-printf("\nGRAU: %d", grau(s));
-printf("\nDERIVATIVE: ");
+    printf("\nGRAU: %d", grau(s));
+    printf("\nDERIVATIVE: ");
     libera(s);
     s = deriva(q);
     for (p = s; p != NULL; p = p->next) {
@@ -66,6 +67,7 @@ printf("\nDERIVATIVE: ");
             printf("\n");
     }
     printf("GRAU: %d\n", grau(s));
+    printf("f(5): %f\n", calcula(s, 5));
     libera(q);
     libera(p);
     libera(r);

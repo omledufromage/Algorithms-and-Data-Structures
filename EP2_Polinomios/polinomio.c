@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "mallocc.h"
 #include "polinomio.h"
 #define N 100
@@ -179,7 +180,12 @@ int grau(Polinomio p) {
 }
 
 double calcula(Polinomio p, double x) {
+    double total = 0;
 
+    for (; p != NULL; p = p->next)
+        total = total + p->coef * pow(x, p->exp);
+
+    return total;
 }
 
 void imprime(Polinomio p, FILE *arq) {

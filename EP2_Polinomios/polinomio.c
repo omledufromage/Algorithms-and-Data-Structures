@@ -18,7 +18,7 @@ static Termo *aloca_termo() {
     Termo *reciclado;
 
     if (lista_livre == NULL)
-        reciclado = mallocX(sizeof(Polinomio));
+        reciclado = mallocX(sizeof(Termo)); // Diferenca entre sizeof(Termo) e sizeof(Polinomio)?
     else {
         if (lista_livre == NULL) {
             fprintf(stderr, "Erro: pilha vazia!\n");
@@ -57,7 +57,8 @@ static Polinomio intercala(Polinomio p, Polinomio q, int lambda) {
             w = cria_monomio(lambda * q->coef, q->exp);
             q = q->next;
         } else {
-            w = cria_monomio(p->coef + lambda * q->coef, p->exp);
+            if (p->coef + lambda * q->coef != 0)
+                w = cria_monomio(p->coef + lambda * q->coef, p->exp);
             p = p->next;
             q = q->next;
         }
@@ -65,7 +66,18 @@ static Polinomio intercala(Polinomio p, Polinomio q, int lambda) {
         w = cria_monomio(p->coef, p->exp);
     for (;q != NULL; q = q->next, last->next = w, last = last->next)
         w = cria_monomio(lambda * q->coef, q->exp);
-    last->next = NULL;
+
+    return first->next;
+}
+
+static Polinomio multiplica_por_monomio(Polinomio p, double coef, int exp) {
+    Termo head;
+    Polinomio s, first = &head, last;
+
+    first->next = NULL;
+    for (last = first; p != NULL && coef != 0; last->next = s, p = p->next, last = last->next) {
+        s = cria_monomio(coef * p->coef, exp + p->exp);
+    }
 
     return first->next;
 }
@@ -106,15 +118,79 @@ Polinomio subtrai(Polinomio p, Polinomio q) {
 }
 
 Polinomio multiplica(Polinomio p, Polinomio q) {
+    Polinomio s, t = NULL, sum = NULL;
 
+    for (; q != NULL; q = q->next) {
+        s = multiplica_por_monomio(p, q->coef, q->exp);
+        sum = soma(t, s);
+        libera(s);
+        libera(t);
+        t = sum;
+    }
+
+    return sum;
 }
 
 Polinomio divide(Polinomio p, Polinomio q) {
+    Polinomio s, t, temp = NULL, quot = NULL;
+    double coef;
+    int exp;
 
+    if (q == NULL) {
+        printf("Cannot divide by 0!\n");
+        exit(EXIT_FAILURE);
+    }
+
+    while (p->exp >= q->exp) {
+        coef = p->coef / q->coef;
+        exp = p->exp - q->exp;
+        t = cria_monomio(coef, exp);
+        s = multiplica_por_monomio(q, coef, exp);
+
+        temp = quot;
+        quot = soma(quot, t); //
+        libera(t);
+        libera(temp);
+
+        temp = p;
+        p = subtrai(p, s); //
+        libera(temp);
+        libera(s);
+    }
+
+    return quot;
 }
 
 Polinomio resto(Polinomio p, Polinomio q) {
+    Polinomio s, t, temp = NULL, quot = NULL; // quot não é necessário, mas está dando problema.
+    double coef;
+    int exp;
 
+    if (q == NULL || q->coef == 0) {
+        printf("Cannot divide by 0!\n");
+        exit(EXIT_FAILURE);
+    }
+
+    while (p->exp >= q->exp) {
+        coef = p->coef / q->coef;
+        exp = p->exp - q->exp;
+        t = cria_monomio(coef, exp); // Esta linha não é necessária, mas se a coloco uma linha abaixo, dá pau.
+        s = multiplica_por_monomio(q, coef, exp);
+        //t = cria_monomio(coef, exp); // Esta linha não é necessária, mas se a coloco uma linha abaixo, dá pau.
+
+        // As quatro linhas abaixo não são necessárias. Mas se eu as removo, dá pau.
+        temp = quot;
+        quot = soma(quot, t);
+        libera(t);
+        libera(temp);
+
+        temp = p;
+        p = subtrai(p, s); // OK
+        libera(temp);
+        libera(s);
+    }
+
+    return p;
 }
 
 Polinomio oposto(Polinomio p) {
@@ -130,7 +206,6 @@ Polinomio oposto(Polinomio p) {
     for (last = first; p != NULL; p = p->next, last->next = s, last = last->next) {
         s = cria_monomio((-1)*p->coef, p->exp);
     }
-    s->next = NULL;
 
     return first->next;
 }
@@ -148,14 +223,14 @@ Polinomio deriva(Polinomio p) {
             last = last->next;
         }
     }
-    s->next = NULL;
+    // s->next = NULL;
 
     return first->next;
 }
 
 Polinomio copia(Polinomio p) {
 
-    return soma(NULL, p);
+    return soma(p, NULL);
 }
 /*
 Polinomio copia(Polinomio p) {

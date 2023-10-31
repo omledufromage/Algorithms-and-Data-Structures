@@ -12,16 +12,34 @@ int main() {
     Polinomio q, p, r, s, t;
 
     printf("FIRST: ");
-    q = cria_monomio(3, 0);
+    q = cria_monomio(3, 2);
     p = copia(q); // PROBLEM WITH COPIA
 
     s = soma(q, p);
-    libera(q);
-    libera(p);
     for (r = s; r != NULL; r = r->next) {
         printf("%.2fx^%d", r->coef, r->exp);
         if (r->next != NULL)
             printf(" + ");
+    }
+
+    printf("\nRESTO\n\n");
+    r = resto(p, q);
+    for (p = r; p != NULL; p = p->next) {
+        printf("%.2fx^%d", p->coef, p->exp);
+        if (p->next != NULL)
+            printf(" + ");
+        else
+            printf("\n");
+    }
+    libera(r);
+
+    r = resto(q, s);
+    for (p = r; p != NULL; p = p->next) {
+        printf("%.2fx^%d", p->coef, p->exp);
+        if (p->next != NULL)
+            printf(" + ");
+        else
+            printf("\n");
     }
 
     printf("\nSECOND: ");
@@ -55,7 +73,7 @@ int main() {
     }
     printf("\nf(3): %f", calcula(s, 3));
 
-    printf("\nGRAU: %d", grau(s));
+    printf("\nGRAU Q: %d", grau(s));
     printf("\nDERIVATIVE: ");
     libera(s);
     s = deriva(q);
@@ -66,12 +84,80 @@ int main() {
         else
             printf("\n");
     }
-    printf("GRAU: %d\n", grau(s));
+    printf("GRAU S: %d\n", grau(s));
     printf("f(5): %f\n", calcula(s, 5));
-    libera(q);
-    libera(p);
+
+    Termo *temp;
+    temp = cria_monomio(1, 0);
     libera(r);
-    libera(s);
+    r = multiplica(s, temp);
+    for (p = r; p != NULL; p = p->next) {
+        printf("%.2fx^%d", p->coef, p->exp);
+        if (p->next != NULL)
+            printf(" + ");
+        else
+            printf("\n");
+    }
+    libera(r);
+    r = multiplica(temp, q);
+    for (p = r; p != NULL; p = p->next) {
+        printf("%.2fx^%d", p->coef, p->exp);
+        if (p->next != NULL)
+            printf(" + ");
+        else
+            printf("\n");
+    }
+
+    libera(r);
+    r = multiplica(s, q);
+    for (p = r; p != NULL; p = p->next) {
+        printf("%.2fx^%d", p->coef, p->exp);
+        if (p->next != NULL)
+            printf(" + ");
+        else
+            printf("\n");
+    }
+    libera(r);
+
+    printf("DIVISÃO\n\n");
+    r = divide(q, s);
+    for (p = r; p != NULL; p = p->next) {
+        printf("%.2fx^%d", p->coef, p->exp);
+        if (p->next != NULL)
+            printf(" + ");
+        else
+            printf("\n");
+    }
+    libera(r);
+
+    r = divide(s, q);
+    for (p = r; p != NULL; p = p->next) {
+        printf("%.2fx^%d", p->coef, p->exp);
+        if (p->next != NULL)
+            printf(" + ");
+        else
+            printf("\n");
+    }
+    libera(r);
+    printf("\nRESTO\n\n");
+    r = resto(s, q);
+    for (p = r; p != NULL; p = p->next) {
+        printf("%.2fx^%d", p->coef, p->exp);
+        if (p->next != NULL)
+            printf(" + ");
+        else
+            printf("\n");
+    }
+    libera(r);
+
+    r = resto(q, s);
+    for (p = r; p != NULL; p = p->next) {
+        printf("%.2fx^%d", p->coef, p->exp);
+        if (p->next != NULL)
+            printf(" + ");
+        else
+            printf("\n");
+    }
 
     return 0;
 }

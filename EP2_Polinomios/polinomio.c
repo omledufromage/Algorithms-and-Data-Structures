@@ -174,9 +174,9 @@ Polinomio resto(Polinomio p, Polinomio q) {
     while (p->exp >= q->exp) {
         coef = p->coef / q->coef;
         exp = p->exp - q->exp;
-        t = cria_monomio(coef, exp); // Esta linha não é necessária, mas se a coloco uma linha abaixo, dá pau.
+        t = cria_monomio(coef, exp); // Esta linha não é necessária, mas se mudar ela para duas linhas abaixo, dá pau.
         s = multiplica_por_monomio(q, coef, exp);
-        //t = cria_monomio(coef, exp); // Esta linha não é necessária, mas se a coloco uma linha abaixo, dá pau.
+        //t = cria_monomio(coef, exp); // Se rodar esse código em ambas as linhas, 179, 177, o resultado é diferente de se só rodar em 177.
 
         // As quatro linhas abaixo não são necessárias. Mas se eu as removo, dá pau.
         temp = quot;

@@ -18,6 +18,7 @@ int main() {
     s = soma(q, p);
     for (r = s; r != NULL; r = r->next) {
         printf("%.2fx^%d", r->coef, r->exp);
+        printf("\n%.2fx^%d", p->coef, p->exp);
         if (r->next != NULL)
             printf(" + ");
     }

@@ -3,7 +3,7 @@ project(EP2_Polinomios C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(EP2_Polinomios main.c mallocc.c mallocc.h polinomio.h polinomio.c)
+add_executable(EP2_Polinomios cliente.c mallocc.c mallocc.h polinomio.h polinomio.c)
 target_link_libraries(EP2_Polinomios m)
 
 #[[

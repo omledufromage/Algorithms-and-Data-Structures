@@ -18,7 +18,7 @@ static Termo *aloca_termo() {
     Termo *reciclado;
 
     if (lista_livre == NULL)
-        reciclado = mallocX(sizeof(Termo)); // Diferenca entre sizeof(Termo) e sizeof(Polinomio)?
+        reciclado = mallocX(sizeof(Termo)); // Diferenca entre sizeof(Termo) e sizeof(Polinomio)?  Termo é um struct. Polinomio é um ponteiro (menor).
     else {
         if (lista_livre == NULL) {
             fprintf(stderr, "Erro: pilha vazia!\n");
@@ -49,16 +49,24 @@ static Polinomio intercala(Polinomio p, Polinomio q, int lambda) {
 
     first->next = NULL;
 
-    for (last = first; p != NULL && q != NULL; last->next = w, last = last->next)
+    last = first;
+    while (p != NULL && q != NULL)
         if (p->exp > q->exp) {
             w = cria_monomio(p->coef, p->exp);
             p = p->next;
+            last->next = w;
+            last = last->next;
         } else if (p->exp < q->exp) {
             w = cria_monomio(lambda * q->coef, q->exp);
             q = q->next;
+            last->next = w;
+            last = last->next;
         } else {
-            if (p->coef + lambda * q->coef != 0)
+            if (p->coef + lambda * q->coef != 0) {
                 w = cria_monomio(p->coef + lambda * q->coef, p->exp);
+                last->next = w;
+                last = last->next;
+            }
             p = p->next;
             q = q->next;
         }
@@ -132,7 +140,7 @@ Polinomio multiplica(Polinomio p, Polinomio q) {
 }
 
 Polinomio divide(Polinomio p, Polinomio q) {
-    Polinomio s, t, temp = NULL, quot = NULL;
+    Polinomio s, t, p_original = p, temp = NULL, quot = NULL;
     double coef;
     int exp;
 
@@ -141,7 +149,7 @@ Polinomio divide(Polinomio p, Polinomio q) {
         exit(EXIT_FAILURE);
     }
 
-    while (p->exp >= q->exp) {
+    while (p != NULL && p->exp >= q->exp) {
         coef = p->coef / q->coef;
         exp = p->exp - q->exp;
         t = cria_monomio(coef, exp);
@@ -154,7 +162,8 @@ Polinomio divide(Polinomio p, Polinomio q) {
 
         temp = p;
         p = subtrai(p, s); //
-        libera(temp);
+        if (temp != p_original)
+            libera(temp);
         libera(s);
     }
 
@@ -162,32 +171,27 @@ Polinomio divide(Polinomio p, Polinomio q) {
 }
 
 Polinomio resto(Polinomio p, Polinomio q) {
-    Polinomio s, t, temp = NULL, quot = NULL; // quot não é necessário, mas está dando problema.
+    Polinomio s, temp = NULL;
     double coef;
     int exp;
 
-    if (q == NULL || q->coef == 0) {
+    p = copia(p);
+
+    if (q == NULL) {
         printf("Cannot divide by 0!\n");
         exit(EXIT_FAILURE);
     }
 
-    while (p->exp >= q->exp) {
-        coef = p->coef / q->coef;
+    while (p != NULL && p->exp >= q->exp) {
+        coef =  p->coef / q->coef;
         exp = p->exp - q->exp;
-        t = cria_monomio(coef, exp); // Esta linha não é necessária, mas se mudar ela para duas linhas abaixo, dá pau.
         s = multiplica_por_monomio(q, coef, exp);
-        //t = cria_monomio(coef, exp); // Se rodar esse código em ambas as linhas, 179, 177, o resultado é diferente de se só rodar em 177.
-
-        // As quatro linhas abaixo não são necessárias. Mas se eu as removo, dá pau.
-        temp = quot;
-        quot = soma(quot, t);
-        libera(t);
-        libera(temp);
 
         temp = p;
-        p = subtrai(p, s); // OK
-        libera(temp);
+        p = subtrai(p, s); // cp_p não está virando NULL quando deveria!
         libera(s);
+        if (temp != p)
+            libera(temp);
     }
 
     return p;
@@ -264,7 +268,14 @@ double calcula(Polinomio p, double x) {
 }
 
 void imprime(Polinomio p, FILE *arq) {
-
+    //arq = fopen("Output.txt", "w");// "w" means that we are going to write on this file
+    for (;p != NULL; p = p->next) {
+        fprintf(arq, "%.2fx^%d", p->coef, p->exp);
+        if (p->next != NULL)
+            fputs(" + ", arq);
+    }
+    fputs("\n", arq);
+    //fclose(arq);
 }
 
 void libera(Polinomio p) {

@@ -49,8 +49,8 @@ cmake_ninja_workdir = /home/mreverbel/Studies/Algorithms$ and$ Data$ Structures/
 
 build cmake_object_order_depends_target_EP2_Polinomios: phony || CMakeFiles/EP2_Polinomios.dir
 
-build CMakeFiles/EP2_Polinomios.dir/main.c.o: C_COMPILER__EP2_Polinomios_Debug /home/mreverbel/Studies/Algorithms$ and$ Data$ Structures/EP2_Polinomios/main.c || cmake_object_order_depends_target_EP2_Polinomios
-  DEP_FILE = CMakeFiles/EP2_Polinomios.dir/main.c.o.d
+build CMakeFiles/EP2_Polinomios.dir/cliente.c.o: C_COMPILER__EP2_Polinomios_Debug /home/mreverbel/Studies/Algorithms$ and$ Data$ Structures/EP2_Polinomios/cliente.c || cmake_object_order_depends_target_EP2_Polinomios
+  DEP_FILE = CMakeFiles/EP2_Polinomios.dir/cliente.c.o.d
   FLAGS = -g -std=gnu99
   OBJECT_DIR = CMakeFiles/EP2_Polinomios.dir
   OBJECT_FILE_DIR = CMakeFiles/EP2_Polinomios.dir
@@ -75,7 +75,7 @@ build CMakeFiles/EP2_Polinomios.dir/polinomio.c.o: C_COMPILER__EP2_Polinomios_De
 #############################################
 # Link the executable EP2_Polinomios
 
-build EP2_Polinomios: C_EXECUTABLE_LINKER__EP2_Polinomios_Debug CMakeFiles/EP2_Polinomios.dir/main.c.o CMakeFiles/EP2_Polinomios.dir/mallocc.c.o CMakeFiles/EP2_Polinomios.dir/polinomio.c.o
+build EP2_Polinomios: C_EXECUTABLE_LINKER__EP2_Polinomios_Debug CMakeFiles/EP2_Polinomios.dir/cliente.c.o CMakeFiles/EP2_Polinomios.dir/mallocc.c.o CMakeFiles/EP2_Polinomios.dir/polinomio.c.o
   FLAGS = -g
   LINK_LIBRARIES = -lm
   OBJECT_DIR = CMakeFiles/EP2_Polinomios.dir
